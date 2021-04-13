@@ -1,4 +1,13 @@
 /**
+update to fetch the featurecollection from
+
+http://www.nycbuswatcher.org/api/v1/nyc/livemap
+
+and return the whole thing
+
+ */
+
+/**
  * A complete Coordinate Pair consisting of a latitude and longitude
  * @typedef {Object} CoordinatePair
  * @property {number} longitude - longitude coordinate
@@ -11,7 +20,7 @@
  * @param {CoordinatePair} centerCoordinates - the {@link CoordinatePair} for the map center
  * @return {results} GeoJSON FeatureCollection
  */
-const fetchFakeData = centerCoordinates => {
+const fetchBusData = centerCoordinates => {
   const newFeaturesList = [];
   for (let i = 0; i < 20; i++) {
     const id = i;
@@ -49,4 +58,4 @@ const getRandomCoordinate = ({ longitude: centerLon, latitude: centerLat }) => {
   return { longitude, latitude };
 };
 
-export default fetchFakeData;
+export default fetchBusData;
