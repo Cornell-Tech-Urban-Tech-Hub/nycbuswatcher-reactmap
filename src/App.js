@@ -5,8 +5,8 @@ import mapboxgl from "mapbox-gl";
 import Popup from "./components/Popup";
 import "./App.css";
 
-const api_url = 'http://127.0.0.1:5000/api/v1/nyc/livemap'
-// const api_url = 'http://nyc.buswatcher.org/api/v1/nyc/livemap'
+//const api_url = 'http://127.0.0.1:5000/api/v1/nyc/livemap'
+const api_url = 'http://nyc.buswatcher.org/api/v1/nyc/livemap'
 
 const App = () => {
   const mapContainerRef = useRef(null);
