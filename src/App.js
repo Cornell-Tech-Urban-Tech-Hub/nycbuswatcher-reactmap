@@ -5,7 +5,8 @@ import mapboxgl from "mapbox-gl";
 import Popup from "./components/Popup";
 import "./App.css";
 
-const api_url = 'http://nyc.buswatcher.org/api/v1/nyc/livemap'
+const api_url = 'http://127.0.0.1:5000/api/v1/nyc/livemap'
+// const api_url = 'http://nyc.buswatcher.org/api/v1/nyc/livemap'
 
 const App = () => {
   const mapContainerRef = useRef(null);
@@ -106,32 +107,32 @@ const App = () => {
 
     // ------------ NYCBUSWATCHER ADAPTED TO HERE ------------
 
-    // // change cursor to pointer when user hovers over a clickable feature
-    // map.on("mouseenter", "buses", e => {
-    //   if (e.features.length) {
-    //     map.getCanvas().style.cursor = "pointer";
-    //   }
-    // });
+    // change cursor to pointer when user hovers over a clickable feature
+    map.on("mouseenter", "buses", e => {
+      if (e.features.length) {
+        map.getCanvas().style.cursor = "pointer";
+      }
+    });
 
-    // // reset cursor to default when user is no longer hovering over a clickable feature
-    // map.on("mouseleave", "buses", () => {
-    //   map.getCanvas().style.cursor = "";
-    // });
+    // reset cursor to default when user is no longer hovering over a clickable feature
+    map.on("mouseleave", "buses", () => {
+      map.getCanvas().style.cursor = "";
+    });
 
-    // // add popup when user clicks a point
-    // map.on("click", "buses", e => {
-    //   if (e.features.length) {
-    //     const feature = e.features[0];
-    //     // create popup node
-    //     const popupNode = document.createElement("div");
-    //     ReactDOM.render(<Popup feature={feature} />, popupNode);
-    //     // set popup on map
-    //     popUpRef.current
-    //       .setLngLat(feature.geometry.coordinates)
-    //       .setDOMContent(popupNode)
-    //       .addTo(map);
-    //   }
-    // });
+    // add popup when user clicks a point
+    map.on("click", "buses", e => {
+      if (e.features.length) {
+        const feature = e.features[0];
+        // create popup node
+        const popupNode = document.createElement("div");
+        ReactDOM.render(<Popup feature={feature} />, popupNode);
+        // set popup on map
+        popUpRef.current
+          .setLngLat(feature.geometry.coordinates)
+          .setDOMContent(popupNode)
+          .addTo(map);
+      }
+    });
 
     // clean up on unmount
     return () => map.remove();
